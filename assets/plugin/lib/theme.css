@@ -1,0 +1,127 @@
+/* ============================================================
+   dsh-boot-rhine — 蓝色主题预设（页面主题个性化）
+   深海军蓝 + DeepSeek 品牌蓝 (#4d6bfe) 的整页调色板覆盖。
+   只作用于深色模式（body[data-ds-dark-theme]）：在 DSH 设置里
+   切回"浅色"即恢复经典白色界面。
+   选择器带 html[data-ds-theme-source] 前缀以提升特异性，保证
+   覆盖应用自身注入的 token 表，无论加载顺序。
+   想换主色：把 #4d6bfe / #7ea2ff / #a5c0ff 按 references/customization.md
+   的映射表整体替换即可。
+   ============================================================ */
+
+html[data-ds-theme-source] body[data-ds-dark-theme] {
+	/* ---- 背景 ---- */
+	--dsw-alias-bg-base: #0a0f1e;
+	--dsw-alias-bg-document-preview: #0a0f1e;
+	--dsw-alias-bg-document-selection: color-mix(in srgb, #4d6bfe 42%, transparent);
+	--dsw-alias-bg-layer-1: #0e152b;
+	--dsw-alias-bg-layer-2: #121a36;
+	--dsw-alias-bg-layer-3: #172143;
+	--dsw-alias-bg-module-platform: #0c1226;
+	--dsw-alias-bg-multi-select: #10182f;
+	--dsw-alias-bg-overlay: #1a2340;
+	--dsw-alias-bg-skeleton: rgb(126 162 255 / 10%);
+	--dsw-alias-bg-mask-drop: rgb(10 15 30 / 76%);
+
+	/* ---- 边框 ---- */
+	--dsw-alias-border-inverted: rgb(126 162 255 / 8%);
+	--dsw-alias-border-inverted2: rgb(126 162 255 / 10%);
+	--dsw-alias-border-l1: rgb(126 162 255 / 8%);
+	--dsw-alias-border-l2: rgb(126 162 255 / 14%);
+	--dsw-alias-border-l2-darkmode-thin: rgb(126 162 255 / 14%);
+	--dsw-alias-border-l3: rgb(126 162 255 / 22%);
+	--dsw-alias-border-l4: rgb(126 162 255 / 30%);
+
+	/* ---- 品牌与按钮 ---- */
+	--dsw-alias-brand-primary: #4d6bfe;
+	--dsw-alias-brand-primary-invert: #0b1022;
+	--dsw-alias-brand-primary-new-colorprimary-new-color: #4d6bfe;
+	--dsw-alias-brand-text: #7ea2ff;
+	--dsw-alias-button-contrast-fill: #e8ecff;
+	--dsw-alias-button-elevated-fill: #172143;
+	--dsw-alias-button-floating-fill: #121a36;
+	--dsw-alias-button-floating-hover: #1a2345;
+	--dsw-alias-button-ghost-active-border: #7ea2ff;
+	--dsw-alias-button-ghost-active-fill: rgb(77 107 254 / 14%);
+	--dsw-alias-button-ghost-active-hover: rgb(77 107 254 / 22%);
+	--dsw-alias-button-info-fill: #3f5ef7;
+	--dsw-alias-button-info-hover: #5d79ff;
+	--dsw-alias-button-primary-dimmed: rgb(77 107 254 / 16%);
+	--dsw-alias-button-primary-hover: #5d79ff;
+	--dsw-alias-button-tool-bar-fill: rgb(126 162 255 / 20%);
+	--dsw-alias-button-tool-bar-fill-invisible: rgb(126 162 255 / 10%);
+	--dsw-alias-button-tool-bar-hover: rgb(126 162 255 / 30%);
+
+	/* ---- 交互 ---- */
+	--dsw-alias-interactive-bg-active: rgb(126 162 255 / 18%);
+	--dsw-alias-interactive-bg-hover: rgb(126 162 255 / 10%);
+	--dsw-alias-interactive-bg-hover-accent: rgb(77 107 254 / 22%);
+	--dsw-alias-interactive-bg-hover-danger: rgb(242 90 90 / 18%);
+	--dsw-alias-interactive-bg-hover-solid: #1a2345;
+
+	/* ---- 文字 ---- */
+	--dsw-alias-label-primary: #e8ecff;
+	--dsw-alias-label-secondary: #a9b6ea;
+	--dsw-alias-label-tertiary: #8392c8;
+	--dsw-alias-label-caption: #6e7fb6;
+	--dsw-alias-label-dimmed: #5f6ea6;
+	--dsw-alias-label-primary-inverted: #0b1022;
+	--dsw-alias-label-primary-foreground: #0b1022;
+	--dsw-alias-label-primary-bluish: #b9c6f2;
+	--dsw-alias-label-primary-dimmed: #c6cff0;
+	--dsw-alias-label-document-preview: #a9b6ea;
+	--dsw-alias-label-deep-diving: color-mix(in srgb, #7ea2ff 55%, #46527e);
+	--dsw-alias-label-deep-diving-shimmer: color-mix(in srgb, #a5c0ff 65%, #7ea2ff);
+	--dsw-alias-label-shimmer: color-mix(in srgb, #e8ecff 45%, transparent);
+
+	/* ---- 链接、菜单、图标 ---- */
+	--dsw-alias-link: #7ea2ff;
+	--dsw-alias-menu-icon: #c6cff0;
+	--dsw-alias-menu-group-header-fill: rgb(13 21 43 / 92%);
+	--dsw-menu-surface-fill: rgb(18 26 58 / 80%);
+
+	/* ---- Markdown / 代码 ---- */
+	--dsw-alias-markdown-citation: #131b3a;
+	--dsw-alias-markdown-code-block: #0d1428;
+	--dsw-alias-markdown-code-block-banner: #101a36;
+	--dsw-alias-markdown-code-segment-selected: #131b3a;
+	--dsw-alias-markdown-code-segment-unselected: #10172f;
+	--dsw-alias-markdown-inline-code: rgb(126 162 255 / 16%);
+	--dsw-alias-markdown-placeholder: #10172f;
+	--dsw-alias-markdown-tag: rgb(126 162 255 / 18%);
+
+	/* ---- 滚动条 ---- */
+	--dsw-alias-scrollbar-bg-l1: rgb(126 162 255 / 16%);
+	--dsw-alias-scrollbar-bg-l2: rgb(126 162 255 / 22%);
+	--dsw-alias-scrollbar-hover-l1: rgb(126 162 255 / 30%);
+	--dsw-alias-scrollbar-hover-l2: rgb(126 162 255 / 36%);
+
+	/* ---- 状态色 ---- */
+	--dsw-alias-state-business-primary: #4d6bfe;
+	--dsw-alias-state-business-tertiary: rgb(77 107 254 / 18%);
+	--dsw-alias-state-idle-primary: #3a4a80;
+
+	/* ---- 组件细节 ---- */
+	--dsw-alias-switch-thumb: #e8ecff;
+	--dsw-alias-toast-bg: #131b3a;
+	--dsw-alias-toast-label: #e8ecff;
+	--dsw-alias-tooltip-bg: #1a2345;
+	--dsw-alias-onboarding-accent: #7ea2ff;
+	--dsw-alias-onboarding-card-fill: rgb(19 27 58 / 80%);
+	--dsw-alias-onboarding-secondary-fill: #1a2345;
+	--dsw-alias-onboarding-checkbox-border: rgb(126 162 255 / 30%);
+	--dsw-alias-settings-card-fill: #10172f;
+	--dsw-alias-settings-card-stroke: rgb(126 162 255 / 14%);
+
+	/* ---- 侧栏 / 气泡 / 输入框（specific 层） ---- */
+	--dsw-specific-bubble: #101a36;
+	--dsw-specific-bubble-highlight: #18224a;
+	--dsw-specific-input-major: #0d1428;
+	--dsw-specific-login-input: #0d1428;
+	--dsw-specific-selector: #131b3a;
+	--dsw-specific-sidebar-fill: #0a0f1e;
+	--dsw-specific-sidebar-nav-item-active-accent: #7ea2ff;
+	--dsw-specific-sidebar-nav-item-active: rgb(77 107 254 / 16%);
+	--dsw-specific-sidebar-nav-item-hover: rgb(126 162 255 / 8%);
+	--dsw-specific-tip: rgb(126 162 255 / 18%);
+}

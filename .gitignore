@@ -1,0 +1,13 @@
+# generated previews
+preview/
+
+# generated wallpaper CSS (contains base64 image)
+theme-bg.css
+
+# config backups
+*.bak-*
+
+# deps / OS
+node_modules/
+.DS_Store
+Thumbs.db

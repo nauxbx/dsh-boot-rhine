@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "testedOn": "DSH desktop nightly 2026-10 (Windows x64)",
+  "note": "DSH 的 CSS Modules 类名带构建哈希，升级后可能变化。壁纸失效时按 references/selectors.md 重新采集，只需要改本文件，然后重跑 scripts/make-bg.mjs。",
+  "roles": {
+    "frame": ".BynINW_frame",
+    "sidebar": ".BynINW_sidebarCol",
+    "header": ".Dc7zOa_header",
+    "transparent": [
+      ".BynINW_centerCol",
+      ".BynINW_rightbarCol",
+      "._paneBody_6nhg2_318",
+      "._emptyTabHost_6nhg2_143",
+      "._pane_6nhg2_209",
+      ".Dc7zOa_root",
+      ".Dc7zOa_body",
+      ".Dc7zOa_scrollBody"
+    ],
+    "conversation": [
+      ".xz4KEq_root",
+      ".xz4KEq_scroll",
+      "[data-conversation-scroll]",
+      ".ZNyiNW_root"
+    ],
+    "messageColumn": ".xz4KEq_column",
+    "trajectoryBar": ".QnvEwG_root",
+    "tabStrip": "._tabStrip_6nhg2_237",
+    "composerCard": ".RlGAzG_card",
+    "composerInput": ".RlGAzG_input",
+    "composerPrimary": ".RlGAzG_primary",
+    "sessionRows": [
+      ".hIlkoa_sessionRow",
+      ".hIlkoa_projectRow",
+      ".hIlkoa_searchResultRow"
+    ]
+  },
+  "colors": {
+    "bg": "#0a0f1e",
+    "sidebar": "#0c1428",
+    "header": "#0e1830",
+    "composer": "#2b4972",
+    "composerText": "#eef2ff",
+    "primary": "#ffffff",
+    "primaryText": "#132647",
+    "primaryHover": "#d7e2ff",
+    "sessionHover": "#22355e",
+    "card": "rgb(11 17 34 / 40%)",
+    "cardBorder": "rgb(126 162 255 / 14%)",
+    "accent": "#7ea2ff"
+  },
+  "wallpaper": {
+    "focus": "50% 40%",
+    "scrim": 25,
+    "leftFade": 20,
+    "leftFadeStop": 6
+  }
+}

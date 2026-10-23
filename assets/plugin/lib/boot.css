@@ -1,0 +1,456 @@
+/* ============================================================
+   dsh-boot-rhine — DeepSeek Harness 蓝色开屏（点击图标启动）
+   深海军蓝 + DeepSeek 品牌蓝 (#4d6bfe)，鲸鱼徽记
+   ============================================================ */
+
+html,
+body {
+	background: #070d1d;
+}
+
+/* --- 默认 harness 启动屏（位于覆盖层之下），同步换成蓝色系 --- */
+[data-dsh-boot] {
+	--dsh-boot-label-primary: #eef2ff;
+	--dsh-boot-label-secondary: #a9b8e8;
+	--dsh-boot-label-tertiary: #8296cf;
+	--dsh-boot-border: rgb(126 162 255 / 26%);
+	--dsh-boot-brand: #7ea2ff;
+	background:
+		radial-gradient(110% 85% at 50% 0%, #122252 0%, #0a142e 58%, #070d1d 100%);
+}
+
+body[data-ds-dark-theme] [data-dsh-boot] {
+	--dsh-boot-label-primary: #eef2ff;
+	--dsh-boot-label-secondary: #a9b8e8;
+	--dsh-boot-label-tertiary: #8296cf;
+	--dsh-boot-border: rgb(126 162 255 / 26%);
+	--dsh-boot-brand: #7ea2ff;
+}
+
+[data-dsh-boot] [class*="_wordmark"] {
+	font-size: 0;
+	letter-spacing: 0;
+}
+
+[data-dsh-boot] [class*="_wordmark"]::after {
+	content: "DEEPSEEK HARNESS";
+	font-size: 15px;
+	letter-spacing: 0.3em;
+	color: #eef2ff;
+}
+
+[data-dsh-boot] [class*="_hint"] {
+	font-size: 0;
+}
+
+[data-dsh-boot] [class*="_hint"]::after {
+	content: "LOADING HARNESS MODULES";
+	font-size: 11px;
+	letter-spacing: 0.16em;
+	color: #8296cf;
+}
+
+[data-dsh-boot] [data-dsh-boot-spinner] {
+	width: 26px;
+	height: 26px;
+	border-color: rgb(126 162 255 / 28%);
+}
+
+/* ============================ 开屏覆盖层 ============================ */
+#dsh-rhine-overlay {
+	--ds-blue: #4d6bfe;
+	--ds-blue-bright: #7ea2ff;
+	--ds-blue-soft: #a5c0ff;
+	--ds-blue-dim: #8296cf;
+	--ds-text: #eef2ff;
+	position: fixed;
+	inset: 0;
+	z-index: 2147483000;
+	pointer-events: auto;
+	cursor: default;
+	overflow: hidden;
+	color: var(--ds-text);
+	background:
+		radial-gradient(120% 90% at 50% -10%, #13265e 0%, #0a142e 52%, #060b18 100%);
+	font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+	opacity: 1;
+	transform: scale(1);
+	transition: opacity 0.45s ease, transform 0.45s ease;
+	will-change: opacity, transform;
+}
+
+#dsh-rhine-overlay.rhine-out {
+	opacity: 0;
+	transform: scale(1.015);
+	pointer-events: none;
+}
+
+/* 细密工程网格 */
+#dsh-rhine-overlay::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background-image:
+		linear-gradient(rgb(126 162 255 / 5%) 1px, transparent 1px),
+		linear-gradient(90deg, rgb(126 162 255 / 5%) 1px, transparent 1px);
+	background-size: 44px 44px;
+	-webkit-mask-image: radial-gradient(85% 75% at 50% 45%, #000 35%, transparent 100%);
+	mask-image: radial-gradient(85% 75% at 50% 45%, #000 35%, transparent 100%);
+	animation: rhine-grid-pan 26s linear infinite;
+}
+
+@keyframes rhine-grid-pan {
+	from { background-position: 0 0, 0 0; }
+	to { background-position: 0 44px, 44px 0; }
+}
+
+/* 扫描光带 */
+.rhine-scan {
+	position: absolute;
+	left: 0;
+	right: 0;
+	height: 130px;
+	background: linear-gradient(180deg, transparent,
+		rgb(126 162 255 / 6%) 20%,
+		rgb(165 192 255 / 10%) 50%,
+		rgb(126 162 255 / 6%) 80%,
+		transparent);
+	animation: rhine-scan 3.6s linear infinite;
+}
+
+@keyframes rhine-scan {
+	from { top: -18%; }
+	to { top: 112%; }
+}
+
+/* 暗角 */
+#dsh-rhine-overlay::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: radial-gradient(115% 115% at 50% 50%, transparent 55%, rgb(3 6 14 / 60%) 100%);
+}
+
+/* ============================ 中央舞台 ============================ */
+.rhine-stage {
+	position: absolute;
+	inset: 0;
+	z-index: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 20px;
+	padding: 24px;
+}
+
+/* --- 鲸鱼徽记（可点击） --- */
+.rhine-emblem {
+	position: relative;
+	width: 224px;
+	height: 224px;
+	cursor: pointer;
+	border-radius: 50%;
+	transition: transform 0.25s ease;
+}
+
+.rhine-emblem:hover {
+	transform: scale(1.045);
+}
+
+.rhine-emblem:active {
+	transform: scale(0.965);
+}
+
+.rhine-emblem svg {
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+
+.rhine-halo {
+	animation: rhine-halo 3.2s ease-in-out infinite alternate;
+	transform-origin: 120px 120px;
+}
+
+@keyframes rhine-halo {
+	from { opacity: 0.55; transform: scale(0.98); }
+	to { opacity: 1; transform: scale(1.04); }
+}
+
+.rhine-orbit {
+	animation: rhine-spin 18s linear infinite;
+	transform-origin: 120px 120px;
+}
+
+.rhine-orbit-dot {
+	animation: rhine-spin 8s linear infinite;
+	transform-origin: 120px 120px;
+}
+
+@keyframes rhine-spin {
+	to { transform: rotate(360deg); }
+}
+
+.rhine-tile {
+	stroke-dasharray: 100;
+	stroke-dashoffset: 100;
+	animation: rhine-draw 1.4s cubic-bezier(0.65, 0, 0.35, 1) 0.15s forwards;
+}
+
+@keyframes rhine-draw {
+	to { stroke-dashoffset: 0; }
+}
+
+.rhine-whale {
+	opacity: 0;
+	transform: scale(0.88);
+	transform-origin: 120px 120px;
+	filter: drop-shadow(0 0 16px rgb(77 107 254 / 55%));
+	animation: rhine-whale-in 1.1s cubic-bezier(0.2, 0.7, 0.3, 1) 0.5s forwards;
+}
+
+@keyframes rhine-whale-in {
+	to { opacity: 1; transform: none; }
+}
+
+/* 就绪后：呼吸脉动提示可点击 */
+#dsh-rhine-overlay.rhine-ready .rhine-emblem {
+	animation: rhine-pulse 2.1s ease-in-out infinite;
+}
+
+@keyframes rhine-pulse {
+	0%, 100% { transform: scale(1); }
+	50% { transform: scale(1.04); }
+}
+
+#dsh-rhine-overlay.rhine-ready .rhine-whale {
+	filter: drop-shadow(0 0 22px rgb(77 107 254 / 85%));
+}
+
+/* 启动瞬间：扩散光环 */
+.rhine-flash {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 224px;
+	height: 224px;
+	margin: -112px 0 0 -112px;
+	border-radius: 50%;
+	border: 2px solid rgb(126 162 255 / 85%);
+	box-shadow: 0 0 30px rgb(77 107 254 / 70%), inset 0 0 24px rgb(77 107 254 / 35%);
+	animation: rhine-flash 0.55s ease-out forwards;
+	pointer-events: none;
+}
+
+@keyframes rhine-flash {
+	from { transform: scale(0.9); opacity: 1; }
+	to { transform: scale(2.4); opacity: 0; }
+}
+
+/* --- 标题 --- */
+.rhine-word {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 0.55em;
+	margin-top: 2px;
+	font-size: clamp(22px, 4.2vw, 36px);
+	font-weight: 300;
+	letter-spacing: 0.24em;
+	padding-left: 0.24em;
+	text-transform: uppercase;
+	color: var(--ds-text);
+}
+
+.rhine-word .rhine-l {
+	display: inline-block;
+	opacity: 0;
+	transform: translateY(14px);
+	animation: rhine-rise 0.6s cubic-bezier(0.2, 0.7, 0.3, 1) forwards;
+	text-shadow: 0 0 22px rgb(77 107 254 / 45%);
+}
+
+.rhine-word .rhine-space {
+	width: 0.9em;
+}
+
+@keyframes rhine-rise {
+	to { opacity: 1; transform: none; }
+}
+
+.rhine-sub {
+	margin-top: -10px;
+	font-size: 15px;
+	font-weight: 300;
+	letter-spacing: 0.42em;
+	padding-left: 0.42em;
+	text-align: center;
+	color: var(--ds-blue-bright);
+	opacity: 0;
+	animation: rhine-fadein 1s ease 0.9s forwards;
+}
+
+.rhine-caption {
+	margin-top: 4px;
+	font-size: 10.5px;
+	letter-spacing: 0.3em;
+	padding-left: 0.3em;
+	text-align: center;
+	color: var(--ds-blue-dim);
+	opacity: 0;
+	animation: rhine-fadein 1s ease 1.15s forwards;
+}
+
+@keyframes rhine-fadein {
+	to { opacity: 1; }
+}
+
+/* --- 进度条 --- */
+.rhine-progress {
+	position: relative;
+	width: min(320px, 60vw);
+	margin-top: 6px;
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.rhine-track {
+	flex: 1;
+	position: relative;
+	height: 2px;
+	background: rgb(126 162 255 / 16%);
+}
+
+.rhine-bar {
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	width: 0%;
+	background: linear-gradient(90deg, #3f5ef7, var(--ds-blue-soft));
+	box-shadow: 0 0 12px rgb(77 107 254 / 65%);
+}
+
+.rhine-bar::after {
+	content: "";
+	position: absolute;
+	right: -1px;
+	top: 50%;
+	width: 5px;
+	height: 5px;
+	border-radius: 50%;
+	transform: translate(50%, -50%);
+	background: var(--ds-blue-soft);
+	box-shadow: 0 0 10px 2px rgb(165 192 255 / 85%);
+}
+
+.rhine-pct {
+	min-width: 46px;
+	text-align: right;
+	font-family: Consolas, "Cascadia Mono", monospace;
+	font-size: 12px;
+	letter-spacing: 0.08em;
+	font-variant-numeric: tabular-nums;
+	color: var(--ds-blue-bright);
+}
+
+.rhine-status {
+	margin-top: 2px;
+	min-height: 16px;
+	font-family: Consolas, "Cascadia Mono", monospace;
+	font-size: 11px;
+	letter-spacing: 0.2em;
+	text-align: center;
+	color: var(--ds-blue-dim);
+}
+
+.rhine-status::after {
+	content: "▌";
+	margin-left: 6px;
+	color: var(--ds-blue-bright);
+	animation: rhine-blink 1s steps(2) infinite;
+}
+
+.rhine-status.rhine-error {
+	color: #f2b8a0;
+}
+
+.rhine-status.rhine-error::after {
+	color: #f2b8a0;
+}
+
+#dsh-rhine-overlay.rhine-ready .rhine-status {
+	color: var(--ds-blue-soft);
+}
+
+#dsh-rhine-overlay.rhine-ready .rhine-status::after {
+	animation: none;
+	content: "";
+}
+
+@keyframes rhine-blink {
+	50% { opacity: 0; }
+}
+
+/* --- 背景水印签名 --- */
+.rhine-watermark {
+	position: absolute;
+	z-index: 1;
+	left: 0;
+	right: 0;
+	bottom: 7.5%;
+	text-align: center;
+	font-size: clamp(18px, 2.6vw, 30px);
+	font-weight: 300;
+	letter-spacing: 0.42em;
+	padding-left: 0.42em;
+	color: rgb(126 162 255 / 16%);
+	text-shadow: 0 0 26px rgb(77 107 254 / 20%);
+	opacity: 0;
+	animation: rhine-fadein 1.4s ease 1.5s forwards;
+	user-select: none;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+/* --- 四角 HUD 括号与系统标签 --- */
+.rhine-corner {
+	position: absolute;
+	z-index: 1;
+	width: 34px;
+	height: 34px;
+	border: 0 solid rgb(126 162 255 / 45%);
+}
+
+.rhine-corner.tl { top: 18px; left: 18px; border-top-width: 1px; border-left-width: 1px; }
+.rhine-corner.tr { top: 18px; right: 18px; border-top-width: 1px; border-right-width: 1px; }
+.rhine-corner.bl { bottom: 18px; left: 18px; border-bottom-width: 1px; border-left-width: 1px; }
+.rhine-corner.br { bottom: 18px; right: 18px; border-bottom-width: 1px; border-right-width: 1px; }
+
+.rhine-tag,
+.rhine-build {
+	position: absolute;
+	z-index: 1;
+	font-family: Consolas, "Cascadia Mono", monospace;
+	font-size: 10px;
+	letter-spacing: 0.18em;
+	color: var(--ds-blue-dim);
+}
+
+.rhine-tag { top: 25px; left: 36px; }
+.rhine-build { bottom: 25px; right: 36px; }
+
+/* --- 减弱动效偏好：静止展示，点击启动 --- */
+@media (prefers-reduced-motion: reduce) {
+	#dsh-rhine-overlay,
+	#dsh-rhine-overlay *,
+	#dsh-rhine-overlay *::before,
+	#dsh-rhine-overlay *::after {
+		animation-duration: 0.001s !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.001s !important;
+	}
+}
