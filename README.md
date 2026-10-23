@@ -29,13 +29,13 @@
 ## 安装
 
 ```bash
-git clone https://github.com/<you>/dsh-boot-rhine.git ~/.dsh/skills/dsh-boot-rhine
+git clone https://github.com/nauxbx/dsh-boot-rhine.git ~/.dsh/skills/dsh-boot-rhine
 ```
 
 Windows PowerShell：
 
 ```powershell
-git clone https://github.com/<you>/dsh-boot-rhine.git "$HOME\.dsh\skills\dsh-boot-rhine"
+git clone https://github.com/nauxbx/dsh-boot-rhine.git "$HOME\.dsh\skills\dsh-boot-rhine"
 ```
 
 重启 DSH（或新开会话），skill 会出现在会话目录里。然后二选一：
